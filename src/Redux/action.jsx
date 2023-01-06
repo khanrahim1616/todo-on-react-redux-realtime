@@ -34,11 +34,9 @@ export const canelEdit = () => {
 };
 
 export const getFirebaseData = (payload) => {
-  const data = Object.values(payload);
-  // const newData=Object.keys(payload)
-  // console.log(newData)
-  const list = data[0].list;
-  const username = data[0].username;
+  const data = payload;
+  const list = data.list;
+  const username = data.username;
 
   return {
     type: types.FIREBASE_DATA,

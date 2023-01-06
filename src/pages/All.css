@@ -1,4 +1,4 @@
-.mainDivSignUp{
+.mainDivSignUp {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,10 +79,14 @@ input {
   background-color: darkred;
 }
 
+.username{
+  cursor: auto!important;
+}
+
 .list {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   width: 500px;
   margin: auto;
   word-break: break-all;
@@ -95,9 +99,12 @@ input {
   width: 70%;
   text-align: initial;
   padding-left: 10px;
+  font-size: larger;
+  margin: 5px 0px;
+  color: antiquewhite;
 }
-.form-control{
-  width: auto!important;
+.form-control {
+  width: auto !important;
   margin: auto;
 }
 .completeData {
@@ -150,7 +157,7 @@ form {
 @media only screen and (max-width: 600px) {
   .list {
     flex-direction: column;
-    width: 200px;
+    width: 260px;
     align-items: center;
   }
 
@@ -258,12 +265,10 @@ form {
   text-align: center;
 }
 
-.dataDiv{
+.dataDiv {
   text-align: center;
   margin: auto;
 }
-
-
 
 /* . */
 

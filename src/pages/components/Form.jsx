@@ -22,7 +22,7 @@ const TodoForm = ({ onSubmit, onChange, value }) => {
   return (
     <Form onSubmit={onSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label style={{ fontSize: "25px" }}>
+        <Form.Label style={{ fontSize: "25px", color: "antiquewhite" }}>
           Add your items here
         </Form.Label>
         <Form.Control

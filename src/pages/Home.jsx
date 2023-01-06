@@ -13,12 +13,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonExample from "./components/Loader";
 import TodoForm from "./components/Form";
 import Swal from "sweetalert2";
+import * as types from "../Redux/type";
 
 const Home = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const auth = getAuth();
   const navigate = useNavigate();
+
+  // console.log(state.uid);
+  // console.log(state.list);
+  // console.log(state.username);
 
   const add = async (e) => {
     e.preventDefault();
@@ -29,7 +34,6 @@ const Home = () => {
 
   const edit = (i) => {
     dispatch(triger.editData(i));
-    // inputRef.current.focus()
   };
 
   const updates = async (e) => {
@@ -52,7 +56,7 @@ const Home = () => {
   const removeAll = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: "you want to sign-out!",
+      text: "you want to Remove-all !",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -76,11 +80,18 @@ const Home = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "sure",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        signOut(auth)
+        await signOut(auth)
           .then(() => {
-            navigate("/");
+            dispatch({
+              type: types.FIREBASE_UID,
+              payload: false,
+            });
+            dispatch({
+              type: types.FIREBASE_DATA,
+              payload: false,
+            });
           })
           .catch((error) => {
             console.log("some error occured");
@@ -90,7 +101,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    return onValue(ref(db, "users/"), (snapshot) => {
+    return onValue(ref(db, "users/" + state.uid), (snapshot) => {
       const data = snapshot.val();
       dispatch(triger.getFirebaseData(data));
     });
@@ -101,7 +112,7 @@ const Home = () => {
       <div className="flexDiv">
         <Buttons
           type="button"
-          className="btn btn-outline-primary"
+          className="btn btn-outline-primary username"
           btnText={state.username == false ? <ButtonExample /> : state.username}
         />
         <Buttons

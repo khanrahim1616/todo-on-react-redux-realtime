@@ -14,6 +14,7 @@ const LogIn = () => {
     let input = { [e.target.name]: e.target.value };
     SetData({ ...data, ...input });
   };
+
   let { email, password } = data;
 
   const signinuser = (e) => {
@@ -30,7 +31,6 @@ const LogIn = () => {
   return (
     <div>
       <form className="signup" onSubmit={signinuser}>
-        <h1 className="p">Log in</h1>
         <input
           required
           type="email"
