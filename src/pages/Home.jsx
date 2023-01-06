@@ -21,10 +21,6 @@ const Home = () => {
   const auth = getAuth();
   const navigate = useNavigate();
 
-  // console.log(state.uid);
-  // console.log(state.list);
-  // console.log(state.username);
-
   const add = async (e) => {
     e.preventDefault();
     await update(ref(db, "users/" + state.uid), {
@@ -88,10 +84,6 @@ const Home = () => {
               type: types.FIREBASE_UID,
               payload: false,
             });
-            dispatch({
-              type: types.FIREBASE_DATA,
-              payload: false,
-            });
           })
           .catch((error) => {
             console.log("some error occured");
@@ -103,6 +95,7 @@ const Home = () => {
   useEffect(() => {
     return onValue(ref(db, "users/" + state.uid), (snapshot) => {
       const data = snapshot.val();
+      console.log(data);
       dispatch(triger.getFirebaseData(data));
     });
   }, []);
@@ -147,6 +140,7 @@ const Home = () => {
         </div>
         {state.list.length > 0 && (
           <Buttons
+            disabled={state.index !== false}
             btnText="Remove_all"
             className="btn  btn-outline-danger"
             onClick={removeAll}
