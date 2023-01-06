@@ -86,7 +86,7 @@ const Home = () => {
             });
           })
           .catch((error) => {
-            console.log("some error occured");
+            console.log(error);
           });
       }
     });
@@ -95,7 +95,6 @@ const Home = () => {
   useEffect(() => {
     return onValue(ref(db, "users/" + state.uid), (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
       dispatch(triger.getFirebaseData(data));
     });
   }, []);
