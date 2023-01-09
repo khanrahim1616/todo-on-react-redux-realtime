@@ -42,7 +42,7 @@ const TodoForm = ({ onSubmit, onChange, value }) => {
         disabled={!state?.input?.trim()}
         type="submit"
       />
-      {state.index !== false && (
+      {state?.index !== false && (
         <Buttons
           className="btn btn-outline-info"
           btnText="Cancel"

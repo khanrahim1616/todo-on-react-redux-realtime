@@ -18,8 +18,8 @@ const Home = () => {
 
   const add = async (e) => {
     e.preventDefault();
-    await update(ref(db, "users/" + state.uid), {
-      list: [...state.list, state.input.trim()],
+    await update(ref(db, "users/" + state?.uid), {
+      list: [...state?.list, state?.input?.trim()],
     });
   };
 
@@ -30,16 +30,16 @@ const Home = () => {
   const updates = async (e) => {
     e.preventDefault();
     dispatch(triger.updateData());
-    let newlist = [...state.list];
-    newlist[state.index] = state.input.trim();
-    await update(ref(db, "users/" + state.uid), {
+    let newlist = [...state?.list];
+    newlist[state?.index] = state?.input.trim();
+    await update(ref(db, "users/" + state?.uid), {
       list: newlist,
     });
   };
 
   const deletes = async (i) => {
-    let newlist = state.list.filter((e, index) => index !== i);
-    await update(ref(db, "users/" + state.uid), {
+    let newlist = state?.list.filter((e, index) => index !== i);
+    await update(ref(db, "users/" + state?.uid), {
       list: newlist,
     });
   };
@@ -55,7 +55,7 @@ const Home = () => {
       confirmButtonText: "sure",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await update(ref(db, "users/" + state.uid), {
+        await update(ref(db, "users/" + state?.uid), {
           list: false,
         });
       }
@@ -93,7 +93,7 @@ const Home = () => {
         <Buttons
           type="button"
           className="btn btn-outline-primary username"
-          btnText={"Hi ! " + state.username}
+          btnText={"Hi ! " + state?.username}
         />
         <Buttons
           onClick={signingOut}
@@ -117,7 +117,7 @@ const Home = () => {
                 />
                 <Buttons
                   onClick={() => deletes(i)}
-                  disabled={state.index !== false}
+                  disabled={state?.index !== false}
                   className="btn  btn-outline-danger"
                   btnText="delete"
                 />
@@ -127,7 +127,7 @@ const Home = () => {
         </div>
         {state?.list?.length > 0 && (
           <Buttons
-            disabled={state.index !== false}
+            disabled={state?.index !== false}
             btnText="Remove_all"
             className="btn  btn-outline-danger"
             onClick={removeAll}
