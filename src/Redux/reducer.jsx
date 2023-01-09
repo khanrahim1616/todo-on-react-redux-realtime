@@ -31,7 +31,7 @@ const reducer = (state = initialstate, action) => {
         input: "",
       };
 
-      case types.CANCEL_EDIT:
+    case types.CANCEL_EDIT:
       return {
         ...state,
         index: false,

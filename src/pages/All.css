@@ -4,6 +4,12 @@
   justify-content: center;
   height: 100vh;
 }
+.btn-outline-info {
+  margin-right: 10px;
+}
+.btn-outline-warning {
+  margin-right: 10px;
+}
 /* home css */
 
 body {
@@ -79,8 +85,8 @@ input {
   background-color: darkred;
 }
 
-.username{
-  cursor: auto!important;
+.username {
+  cursor: auto !important;
 }
 
 .list {
@@ -98,9 +104,8 @@ input {
 .data {
   width: 70%;
   text-align: initial;
-  padding-left: 10px;
   font-size: larger;
-  margin: 5px 0px;
+  margin-bottom: 10px;
   color: antiquewhite;
 }
 .form-control {

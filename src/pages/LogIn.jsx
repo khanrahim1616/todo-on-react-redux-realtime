@@ -16,7 +16,6 @@ const LogIn = () => {
   };
 
   let { email, password } = data;
-
   const signinuser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)

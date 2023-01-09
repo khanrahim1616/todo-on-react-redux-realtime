@@ -1,25 +1,24 @@
 import React from "react";
 import * as triger from "../Redux/action";
+import * as types from "../Redux/type";
 import { useSelector, useDispatch } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { db } from "../firebaseconfig";
 import { update, onValue, ref } from "firebase/database";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Buttons from "./components/Button";
 import "./All.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonExample from "./components/Loader";
 import TodoForm from "./components/Form";
 import Swal from "sweetalert2";
-import * as types from "../Redux/type";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const auth = getAuth();
-  const navigate = useNavigate();
 
   const add = async (e) => {
     e.preventDefault();
@@ -100,12 +99,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ margin: "15px 0px" }}>
       <div className="flexDiv">
         <Buttons
           type="button"
           className="btn btn-outline-primary username"
-          btnText={state.username == false ? <ButtonExample /> : state.username}
+          btnText={state.username == false ? <ButtonExample /> :"Hi ! "+ state.username}
         />
         <Buttons
           onClick={signingOut}
