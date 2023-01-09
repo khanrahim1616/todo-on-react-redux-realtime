@@ -6,3 +6,4 @@ export const DELETE_DATA = "DELETE_DATA";
 export const FIREBASE_DATA = "FIREBASE_DATA";
 export const FIREBASE_UID = "FIREBASE_UID";
 export const CANCEL_EDIT = "CANCEL_EDIT";
+export const SET_LOADING="SET_LOADING"

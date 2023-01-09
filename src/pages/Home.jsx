@@ -3,14 +3,10 @@ import * as triger from "../Redux/action";
 import * as types from "../Redux/type";
 import { useSelector, useDispatch } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
 import { db } from "../firebaseconfig";
-import { update, onValue, ref } from "firebase/database";
+import { update, ref } from "firebase/database";
 import Buttons from "./components/Button";
 import "./All.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ButtonExample from "./components/Loader";
 import TodoForm from "./components/Form";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -91,20 +87,13 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    return onValue(ref(db, "users/" + state.uid), (snapshot) => {
-      const data = snapshot.val();
-      dispatch(triger.getFirebaseData(data));
-    });
-  }, []);
-
   return (
     <div style={{ margin: "15px 0px" }}>
       <div className="flexDiv">
         <Buttons
           type="button"
           className="btn btn-outline-primary username"
-          btnText={state.username == false ? <ButtonExample /> :"Hi ! "+ state.username}
+          btnText={"Hi ! " + state.username}
         />
         <Buttons
           onClick={signingOut}
@@ -114,7 +103,7 @@ const Home = () => {
       </div>
       <div className="dataDiv">
         <div>
-          <TodoForm onSubmit={state.index === false ? add : updates} />
+          <TodoForm onSubmit={state?.index === false ? add : updates} />
         </div>
         <div>
           {state?.list?.map((e, i) => (
@@ -136,7 +125,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        {state.list.length > 0 && (
+        {state?.list?.length > 0 && (
           <Buttons
             disabled={state.index !== false}
             btnText="Remove_all"

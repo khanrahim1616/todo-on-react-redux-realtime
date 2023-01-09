@@ -33,6 +33,12 @@ export const canelEdit = () => {
   };
 };
 
+export const Loader = () => {
+  return {
+    type: types.SET_LOADING,
+  };
+};
+
 export const getFirebaseData = (payload) => {
   const data = payload;
   const list = data.list;

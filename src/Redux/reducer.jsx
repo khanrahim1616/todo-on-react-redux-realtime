@@ -51,9 +51,13 @@ const reducer = (state = initialstate, action) => {
       return {
         ...state,
         uid: action.payload,
-        loading: false,
       };
-
+    case types.SET_LOADING:
+      return {
+        loading: action.payload,
+        uid: false,
+        index: false,
+      };
     default:
       return state;
   }
