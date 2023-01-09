@@ -39,16 +39,16 @@ const TodoForm = ({ onSubmit, onChange, value }) => {
       <Buttons
         className="btn btn-outline-info"
         btnText={state.index === false ? "Add" : "update"}
-        disabled={!state.input.trim()}
+        disabled={!state?.input?.trim()}
         type="submit"
       />
       {state.index !== false && (
-          <Buttons
-            className="btn btn-outline-info"
-            btnText="Cancel"
-            type="button"
-            onClick={cancel}
-          />
+        <Buttons
+          className="btn btn-outline-info"
+          btnText="Cancel"
+          type="button"
+          onClick={cancel}
+        />
       )}
     </Form>
   );

@@ -18,7 +18,6 @@ const App = () => {
         dispatch(triger.getUserUid(uid));
         onValue(ref(db, "users/" + uid), (snapshot) => {
           const data = snapshot.val();
-          console.log(data);
           dispatch(triger.getFirebaseData(data));
         });
       } else {
